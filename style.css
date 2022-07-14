@@ -1,0 +1,204 @@
+@import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=Archivo:wght@100;500&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  --font-family: "Archivo", sans-serif;
+  background-color: #011d30;
+  font-family: var(--font-family);
+  font-family: "Archivo Black", sans-serif;
+  scroll-behavior: smooth;
+}
+
+/* the following refers to the header */
+label {
+  display: block;
+  width: 100%;
+}
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 1.3rem auto 0;
+  display: block;
+  border-radius: 1rem;
+  border: none;
+  width: min(30rem, 90%);
+  height: 2rem;
+}
+
+.main-navbar {
+  height: 3rem;
+  width: 100vw;
+  height: 60px;
+}
+
+.menu a {
+  padding-right: 2.5rem;
+  color: #188fd4;
+  font-size: 1.2rem;
+  text-decoration: none;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.35);
+  transition: transform 0.5s ease;
+}
+.menu a:hover {
+  text-decoration: underline #188fd4;
+  transform: scale(1.1);
+}
+.menu ul {
+  margin: 0.6rem;
+  padding: 0.8rem;
+  list-style-type: none;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.searchbar {
+  width: 100%;
+  height: 5rem;
+  padding-bottom: 7rem;
+  display: flex;
+  justify-content: center;
+}
+
+.secondLogo {
+  display: flex;
+  justify-content: center;
+  height: 25rem;
+}
+.secondLogo img {
+  max-width: 100vw;
+  object-fit: cover;
+}
+/* the following refers to main */
+
+main {
+  margin-top: 2rem;
+  border-radius: 80%/100px 100px 100px 100px;
+  background-color: #093857;
+
+  width: 100%;
+}
+
+div#card_plus_image {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+.spacer {
+  height: 6rem;
+}
+.weather_cards {
+  width: 100%;
+  padding: 1rem;
+}
+.weather_cards,
+.single_card {
+  background-color: white;
+}
+/* the following refers to footer */
+footer {
+  height: 20rem;
+}
+.finalcredits {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+  color: #fff;
+  font-family: "Archivo", sans-serif;
+}
+.finalcredits :hover {
+  background-color: #093857;
+}
+/* the following refers to footer's animated icons */
+
+.icon {
+  width: 60px;
+  height: 60px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  font-size: 26px;
+  color: #fff;
+  border-radius: 50%;
+  outline: 2px solid #fff;
+  transition-property: outline-offset, outline-color, background-color;
+  transition-duration: 0.25s;
+}
+
+.icons {
+  padding-top: 10rem;
+  display: flex;
+  justify-content: center;
+  column-gap: 25px;
+}
+
+.icon:hover {
+  outline-offset: 4px;
+}
+
+.icon:hover i {
+  animation: shake 0.25s;
+}
+
+.icon--linkedin:hover {
+  background-color: #0077b5;
+  outline-color: #0077b5;
+}
+
+.icon--github:hover {
+  background-color: #672ea4;
+  outline-color: #672ea4;
+}
+
+@keyframes shake {
+  10% {
+    transform: rotate(15deg);
+  }
+
+  20% {
+    transform: rotate(-15deg);
+  }
+
+  30% {
+    transform: rotate(15deg);
+  }
+
+  40% {
+    transform: rotate(-15deg);
+  }
+}
+
+/* the following refers to responsiveness */
+
+@media only screen and (max-width: 760px) {
+  * {
+    overflow-x: none;
+  }
+
+  nav {
+    margin: auto;
+  }
+  div#card_plus_image {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .menu ul {
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+    margin: 0;
+  }
+  .menu ul a {
+    padding: 0;
+  }
+  .secondLogo {
+    margin-top: 2rem;
+  }
+}

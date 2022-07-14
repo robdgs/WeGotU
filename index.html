@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <header>
+      <nav class="main-navbar">
+        <div class="menu">
+          <ul>
+            <a href="https://www.visitsicily.info/" target="_blank"
+              >TOURIST INFOS</a
+            >
+            <a
+              href="https://www.google.com/maps/place/Sicily/@37.4661597,13.0898098,8.3z/data=!4m5!3m4!1s0x13106268d05359b3:0x10b042967b67d50!8m2!3d37.5999938!4d14.0153557"
+              target="_blank"
+              >MAPS</a
+            >
+
+            <a href="#about">ABOUT</a>
+          </ul>
+        </div>
+      </nav>
+      <div class="secondLogo">
+        <img src="./img/logo.png" alt="" />
+      </div>
+      <div class="searchbar">
+        <label>
+          <select class="locations">
+            <option class="option" value="" selected>
+              &nbsp; &nbsp; Click me and select one
+            </option>
+            <option class="option" value="palermo">
+              &nbsp; &nbsp; Palermo
+            </option>
+            <option class="option" value="trapani">
+              &nbsp; &nbsp; Trapani
+            </option>
+            <option class="option" value="catania">
+              &nbsp; &nbsp; Catania
+            </option>
+            <option class="option" value="agrigento">
+              &nbsp; &nbsp; Agrigento
+            </option>
+            <option class="option" value="siracusa">
+              &nbsp; &nbsp; Siracusa
+            </option>
+            <option class="option" value="caltanissetta">
+              &nbsp; &nbsp; Caltanissetta
+            </option>
+            <option class="option" value="ragusa">&nbsp; &nbsp; Ragusa</option>
+            <option class="option" value="enna">&nbsp; &nbsp; Enna</option>
+            <option class="option" value="messina">
+              &nbsp; &nbsp; Messina
+            </option>
+          </select>
+        </label>
+      </div>
+    </header>
+
+    <main>
+      <div class="spacer"></div>
+      <div class="card_plus_image" id="card_plus_image"></div>
+
+      <div class="spacer"></div>
+    </main>
+
+    <footer>
+      <div class="icons">
+        <a
+          href="https://www.linkedin.com/in/roberta-d-agostino-285173241/"
+          target="_blank"
+          class="icon icon--linkedin"
+        >
+          <i class="ri-linkedin-line"></i>
+        </a>
+        <a
+          href="https://github.com/robdgs"
+          target="_blank"
+          class="icon icon--github"
+        >
+          <i class="ri-github-line"></i>
+        </a>
+        <br />
+      </div>
+      <div class="finalcredits">
+        <p>Designed and Built by Roberta D'Agostino</p>
+      </div>
+    </footer>
+
+    <script src="./script.js" type="module"></script>
+    <script src="./api.js" type="module"></script>
+  </body>
+</html>
