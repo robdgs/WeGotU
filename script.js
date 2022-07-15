@@ -1,70 +1,64 @@
 import { URLsArray } from "./api.js";
 
-const mySelect = document.querySelector(".locations");
-//const option = mySelect.options;
-const displayedSection = document.getElementById("card_plus_image");
-const imgURLprefix = "https://api.openweathermap.org/img/w/";
-const imgURLsuffix = ".png";
-const URLprefix = "https://api.openweathermap.org/data/2.5/weather?q=";
-const URLsuffix = "&appid=022e5b8fec789e7be6b497c43973b47b";
+const SelectEl = document.querySelector(".locations");
+const resultsEl = document.getElementById("card_plus_image");
+const loaderEl = document.querySelector(".loader");
 
-function fetchingAllCards() {
-  for (let i = 0; i < URLsArray.length; i++) {
-    fetch(URLsArray[i])
-      .then((res) => res.json())
-      .then((data) => {
-        //console.log(data);
-
-        let completeImgURL = imgURLprefix.concat(
-          data.weather[0].icon,
-          imgURLsuffix
-        );
-
-        displayedSection.innerHTML += `
-            <div class="weather_cards">
-           <h3 class="weather_location">${data.name}</h3>
-            <img src="${completeImgURL}" alt="weather icon">
-         <h4 class="weather_main">${data.weather[0].main}</h4>
-                <p class="weather_description">${data.weather[0].description}</p>
-            </div>`;
-      });
-  }
-}
+const URLs = {
+  image: {
+    prefix: "https://api.openweathermap.org/img/w/",
+    suffix: ".png",
+  },
+  api: {
+    prefix: "https://api.openweathermap.org/data/2.5/weather?q=",
+    suffix: "&appid=022e5b8fec789e7be6b497c43973b47b",
+  },
+};
 
 fetchingAllCards();
 
-mySelect.addEventListener("change", function () {
-  //   console.log(e);
-  //   console.dir(mySelect);
-  displayedSection.innerHTML = ``;
+SelectEl.addEventListener("change", function () {
+  resultsEl.innerHTML = ``;
+  loaderEl.style.display = "block";
 
-  if (mySelect.value === "") {
+  if (SelectEl.value === "") {
     fetchingAllCards();
   } else {
-    fetch(URLprefix.concat(mySelect.value, URLsuffix))
-      .then((res) => res.json())
-      .then((data) => {
-        // console.log(data);
-        // console.log(data.weather);
-        // console.log(data.weather.main);
-        // console.log(data.weather[0].icon);
-        // console.log(data.name);
-        let completeImgURL = imgURLprefix.concat(
-          data.weather[0].icon,
-          imgURLsuffix
-        );
-
-        // console.log(completeImgURL);
-        displayedSection.innerHTML += `
-              <div class="single_card">
-              <h3 class="weather_location">${data.name}</h3>
-              <img src="${completeImgURL}" alt="weather icon">
-              <h4 class="weather_main">${data.weather[0].main}</h4>
-              <p class="weather_description">${data.weather[0].description}</p>
-              </div>`;
-      });
+    fetchCity(URLs.api.prefix.concat(SelectEl.value, URLs.api.suffix));
   }
 });
+
+function fetchingAllCards() {
+  for (let i = 0; i < URLsArray.length; i++) {
+    fetchCity(URLsArray[i]);
+  }
+}
+
+function fetchCity(url) {
+  fetch(url)
+    .then((res) => res.json())
+    .then((data) => {
+      let completeImgURL = URLs.image.prefix.concat(
+        data.weather[0].icon,
+        URLs.image.suffix
+      );
+
+      resultsEl.innerHTML += `
+        <div class="weather_cards">
+       <h3 class="weather_location">${data.name}</h3>
+        <img src="${completeImgURL}" alt="weather icon">
+     <h4 class="weather_main">${data.weather[0].main}</h4>
+            <p class="weather_description">${data.weather[0].description}</p>
+        </div>`;
+    })
+    .catch((error) => {
+      console.log(error);
+      //alert(error.message);
+    })
+    .finally(() => {
+      loaderEl.style.display = "none";
+    });
+}
 
 //TO-DO LIST:
 
